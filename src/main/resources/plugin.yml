@@ -1,0 +1,8 @@
+name: RevivedLocyItem
+main: com.locydragon.rli.RevivedLocyItem
+version: 1.0.0
+author: LocyDragon
+commands:
+  rli:
+  rlitem:
+  revivedlocyitem:
