@@ -15,7 +15,7 @@ public class ReloadCmd implements SubCmd {
 		}
 		ItemConfigReader.readFile();
 		String msg = ConfigLinker.readConfigLang
-				("Reload", "{prefix}", Colors.color(RevivedLocyItem.mainConfiguration.getString("Prefix")));
+				("Reload", "{prefix}", Colors.color(RevivedLocyItem.mainConfiguration.getString("prefix")));
 		commandSender.sendMessage(msg);
 	}
 

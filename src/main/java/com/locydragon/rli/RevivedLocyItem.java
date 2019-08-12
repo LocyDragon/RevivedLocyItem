@@ -32,9 +32,9 @@ public class RevivedLocyItem extends JavaPlugin {
 		SubCommandRegister.registerSubCommands();/** 注册子命令呀 **/
 		instance = this;
 
-		if (!Bukkit.getPluginManager().isPluginEnabled("PlaceHolderAPI")) {
+		if (!Bukkit.getPluginManager().isPluginEnabled("PlaceholderAPI")) {
 			Bukkit.getPluginManager().disablePlugin(this);
-			getLogger().info("Failed to find plugin PlaceHolderAPI……");
+			getLogger().info("Failed to find plugin PlaceholderAPI……");
 		}
 	}
 }

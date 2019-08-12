@@ -14,6 +14,7 @@ import org.bukkit.inventory.ItemStack;
 public class EditorInventoryIniter {
 
 	public static void initMainInventory() {
+		/**
 		Inventory mainInventory = Bukkit.createInventory(null, 54,
 				ConfigLinker.readConfigLang("Editor", null, null));
 		ItemStack itemSpliter = new ItemStack(Material.STAINED_GLASS_PANE);
@@ -21,5 +22,6 @@ public class EditorInventoryIniter {
 		ItemManager.setDisplayName(itemSpliter, new String());
 		InventoryManager.fillWith(mainInventory, itemSpliter);
 		MainMenuListener.MAIN_MENU = new EditorMenu(mainInventory, MenuTag.MAIN, "MAIN_INVENTORY");
+		 **/
 	}
 }

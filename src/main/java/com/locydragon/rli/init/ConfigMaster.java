@@ -13,7 +13,7 @@ public class ConfigMaster {
 	public void initConfig() {
 		plugin.saveDefaultConfig();
 		RevivedLocyItem.mainConfiguration = plugin.getConfig();
-		ItemConfigReader.genDefault();
+		ItemConfigReader.readFile();
 	}
 
 	public void reloadConfig(){

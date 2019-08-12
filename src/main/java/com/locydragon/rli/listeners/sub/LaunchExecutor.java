@@ -23,7 +23,7 @@ public class LaunchExecutor implements Listener {
 		for (String each : values.split(",")) {
 			LaunchExecutor.values.add(each.trim());
 			try {
-				classMap.put(each, (Class<? extends Projectile>) Class.forName("org.bukkit.entity." + each));
+				classMap.put(each.trim(), (Class<? extends Projectile>) Class.forName("org.bukkit.entity." + each.trim()));
 			} catch (ClassNotFoundException e) {
 				continue;
 			}
@@ -60,11 +60,11 @@ public class LaunchExecutor implements Listener {
 				}
 			}
 			if (!values.contains(type)) {
-				Bukkit.getLogger().info("Warning: Type wrong with item " + e.getOnUseItem().getID() + "'s skill: launch!Type not found!");
+				Bukkit.getLogger().info("Warning: Type wrong with item " + e.getOnUseItem().getID() + "'s skill: launch!Type not found!——" + type);
 				return;
 			}
 			if (classMap.getOrDefault(type, null) == null) {
-				Bukkit.getLogger().info("Warning: Type wrong with item " + e.getOnUseItem().getID() + "'s skill: launch!Type version error.");
+				Bukkit.getLogger().info("Warning: Type wrong with item " + e.getOnUseItem().getID() + "'s skill: launch!Type version error.——" + type);
 				return;
 			}
 			UUID entityUUID = e.getPlayer().launchProjectile(classMap.get(type), e.getPlayer().getVelocity()).getUniqueId();
@@ -75,7 +75,7 @@ public class LaunchExecutor implements Listener {
 					damageMap.put(entityUUID, ExpressionHelper.run(e.getPlayer(), damage));
 				}
 			} catch (Exception exc) {
-				Bukkit.getLogger().info("Warning: Type wrong with item " + e.getOnUseItem().getID() + "'s skill: launch!Expression error.");
+				Bukkit.getLogger().info("Warning: Type wrong with item " + e.getOnUseItem().getID() + "'s skill: launch!Expression error.——" + damage);
 				return;
 			}
 		}

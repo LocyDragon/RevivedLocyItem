@@ -24,8 +24,8 @@ public class LocyItem {
 		ItemMeta meta = getMeta();
 		meta.setDisplayName(Colors.color(name));
 		setMeta(meta);
-		ItemNBTSetGet.addPluginTag(this.buildItem, id);
 		this.id = id;
+		this.buildItem = ItemNBTSetGet.addPluginTag(this.buildItem, id);
 	}
 
 	public ItemStack getItem() {

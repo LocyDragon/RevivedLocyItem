@@ -21,12 +21,12 @@ public class ItemRewardCmdCopy implements SubCmd {
 				commandSender.getInventory().addItem(item.getItem());
 			} else {
 				String msg = ConfigLinker.readConfigLang
-						("NotFound", "{prefix}", Colors.color(RevivedLocyItem.mainConfiguration.getString("Prefix")));
+						("NotFound", "{prefix}", Colors.color(RevivedLocyItem.mainConfiguration.getString("prefix")));
 				commandSender.sendMessage(msg);
 			}
 		} else {
 			String msg = ConfigLinker.readConfigLang
-					("GetItem", "{prefix}", Colors.color(RevivedLocyItem.mainConfiguration.getString("Prefix")));
+					("GetItem", "{prefix}", Colors.color(RevivedLocyItem.mainConfiguration.getString("prefix")));
 			commandSender.sendMessage(msg);
 		}
 	}

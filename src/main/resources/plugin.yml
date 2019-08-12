@@ -2,7 +2,7 @@ name: RevivedLocyItem
 main: com.locydragon.rli.RevivedLocyItem
 version: 1.0.0
 author: LocyDragon
-depend: [PlaceHolderAPI]
+depend: [PlaceholderAPI]
 commands:
   rli:
   rlitem:

@@ -21,9 +21,10 @@ public class ItemNBTSetGet {
 		}
 	}
 
-	public static void addPluginTag(ItemStack item, String ID) {
+	public static ItemStack addPluginTag(ItemStack item, String ID) {
+		Object nmsItem = null;
 		try {
-			Object nmsItem = craftItemClass.getMethod("asNMSCopy", ItemStack.class).invoke(item, null);
+			nmsItem = craftItemClass.getMethod("asNMSCopy", ItemStack.class).invoke(null, item);
 			Object tag = nmsItemClass.getMethod("getTag").invoke(nmsItem);
 			if (tag == null) {
 				try {
@@ -37,11 +38,17 @@ public class ItemNBTSetGet {
 		} catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
 			e.printStackTrace();
 		}
+		try {
+			return (ItemStack) craftItemClass.getMethod("asBukkitCopy",nmsItemClass).invoke(null, nmsItem);
+		} catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
+			e.printStackTrace();
+		}
+		throw new IllegalArgumentException();
 	}
 
 	public static String getPluginTag(ItemStack item) {
 		try {
-			Object nmsItem = craftItemClass.getMethod("asNMSCopy", ItemStack.class).invoke(item, null);
+			Object nmsItem = craftItemClass.getMethod("asNMSCopy", ItemStack.class).invoke(null, item);
 			Object tag = nmsItemClass.getMethod("getTag").invoke(nmsItem);
 			if (tag == null) {
 				return null;

@@ -58,8 +58,13 @@ public class ItemConfigReadFactory {
 					}
 				}
 			}
-
-			//TODO 附魔
+			//TODO 技能
+			List<String> skills = config.getStringList(key + ".Skills");
+			if (skills != null && !skills.isEmpty()) {
+				for (String obj : skills) {
+					item.addSkill(obj);
+				}
+			}
 
 			LocyItemAPI.registerItem(item);
 		}

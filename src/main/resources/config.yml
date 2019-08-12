@@ -1,5 +1,3 @@
-Plugin-Encode: GB2312 #插件编码-编码
-Plugin-Decode: GB18030 #插件编码-解码
 prefix: "&7[&bRevivedLocyItem&7]"
 Lang: #语言信息
   lang-EncodeSet: ""

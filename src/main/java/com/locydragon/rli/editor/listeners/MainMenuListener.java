@@ -12,7 +12,7 @@ import java.util.HashMap;
 public class MainMenuListener implements Listener {
 	public static EditorMenu MAIN_MENU = null;
 	public static HashMap<HumanEntity,EditorMenu> subMenuMap = new HashMap<>();
-
+    /**
 	@EventHandler
 	public void onMainMenuClick(InventoryClickEvent e) {
 		if (!(e.getWhoClicked() instanceof Player)) {
@@ -54,4 +54,5 @@ public class MainMenuListener implements Listener {
 			}
 		}
 	}
+	**/
 }
