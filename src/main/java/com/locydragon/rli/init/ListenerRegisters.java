@@ -2,6 +2,7 @@ package com.locydragon.rli.init;
 
 import com.locydragon.rli.RevivedLocyItem;
 import com.locydragon.rli.editor.listeners.MainMenuListener;
+import com.locydragon.rli.listeners.InteractFatherListener;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Listener;
 
@@ -13,6 +14,7 @@ public class ListenerRegisters {
 
 	//TODO WRITE LISTENERS HERE
 	public void registerListeners() {
+		registerEventForBukkit(new InteractFatherListener());
 		registerEventForBukkit(new MainMenuListener());
 	}
 

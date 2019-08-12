@@ -1,6 +1,7 @@
 package com.locydragon.rli.init;
 
 import com.locydragon.rli.RevivedLocyItem;
+import com.locydragon.rli.io.ItemConfigReader;
 import org.bukkit.configuration.file.FileConfiguration;
 
 public class ConfigMaster {
@@ -12,6 +13,7 @@ public class ConfigMaster {
 	public void initConfig() {
 		plugin.saveDefaultConfig();
 		RevivedLocyItem.mainConfiguration = plugin.getConfig();
+		ItemConfigReader.genDefault();
 	}
 
 	public void reloadConfig(){
