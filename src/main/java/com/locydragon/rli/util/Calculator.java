@@ -1,5 +1,8 @@
 package com.locydragon.rli.util;
 
+import me.clip.placeholderapi.PlaceholderAPI;
+import org.bukkit.entity.Player;
+
 import java.util.Collections;
 import java.util.Stack;
 
@@ -12,7 +15,8 @@ public final class Calculator {
      * @param expression 要计算的表达式例如:5+12*(3+5)/7
      * @return
      */
-    public double calculate(String expression) {
+    public double calculate(Player who, String expression) {
+        expression = PlaceholderAPI.setBracketPlaceholders(who, expression);
         Stack<String> resultStack  = new Stack<String>();
         prepare(expression);
         Collections.reverse(postfixStack);//将后缀式栈反转

@@ -1,6 +1,10 @@
 Plugin-Encode: GB2312 #插件编码-编码
 Plugin-Decode: GB18030 #插件编码-解码
+prefix: "&7[&bRevivedLocyItem&7]"
 Lang: #语言信息
   lang-EncodeSet: ""
-  lang-ShowVersion: "&aRevivedLocyItem-{version} 插件已经在您的服务器上加载了."
-  lang-illegal: "物品{item}在{where}处写错了!"
+  lang-ShowVersion: "&aRevivedLocyItem-{version} 插件已经在您的服务器上加载了.(*^▽^*)"
+  lang-illegal: "物品{item}在{where}处写错了![○･｀Д´･ ○]"
+  lang-GetItem: "{prefix}&c请使用/rli item [物品ID名称] ——来获得一个RPG物品吧!(*^▽^*)"
+  lang-NotFound: "{prefix}&c对不起，没有找到那个RPG物品[○･｀Д´･ ○]."
+  lang-Reload: "{prefix}&c重载配置文件成功(*^▽^*)"

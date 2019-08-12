@@ -31,5 +31,10 @@ public class RevivedLocyItem extends JavaPlugin {
 		EditorInventoryIniter.initMainInventory();
 		SubCommandRegister.registerSubCommands();/** 注册子命令呀 **/
 		instance = this;
+
+		if (!Bukkit.getPluginManager().isPluginEnabled("PlaceHolderAPI")) {
+			Bukkit.getPluginManager().disablePlugin(this);
+			getLogger().info("Failed to find plugin PlaceHolderAPI……");
+		}
 	}
 }
