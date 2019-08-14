@@ -8,8 +8,6 @@ import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-
-import javax.swing.text.html.Option;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -26,6 +24,10 @@ public class LocyItem {
 		setMeta(meta);
 		this.id = id;
 		this.buildItem = ItemNBTSetGet.addPluginTag(this.buildItem, id);
+	}
+
+	public void setBuildItem(ItemStack item) {
+		this.buildItem = item;
 	}
 
 	public ItemStack getItem() {

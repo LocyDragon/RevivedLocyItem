@@ -2,6 +2,7 @@ package com.locydragon.rli;
 
 import com.locydragon.rli.commands.CommandDiverter;
 import com.locydragon.rli.init.*;
+import com.locydragon.rli.runnable.ItemSyncRunnable;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -13,6 +14,7 @@ public class RevivedLocyItem extends JavaPlugin {
 	public static FileConfiguration mainConfiguration = null;
 	public static ConfigMaster configMaster = null;
 	public static RevivedLocyItem instance;
+	public static boolean isCitizensOnServer = false;
 
 	@Override
 	public void onEnable() {
@@ -36,5 +38,10 @@ public class RevivedLocyItem extends JavaPlugin {
 			Bukkit.getPluginManager().disablePlugin(this);
 			getLogger().info("Failed to find plugin PlaceholderAPI……");
 		}
+
+		new ItemSyncRunnable().runTaskTimer(this, 0
+				, getConfig().getInt("SyncDelay") * 20);
+
+		isCitizensOnServer = Bukkit.getPluginManager().isPluginEnabled("Citizens");
 	}
 }

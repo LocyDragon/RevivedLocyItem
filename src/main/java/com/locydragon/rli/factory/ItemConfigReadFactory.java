@@ -9,7 +9,6 @@ import com.locydragon.rli.util.LangReader;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.enchantments.Enchantment;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,6 +19,7 @@ public class ItemConfigReadFactory {
 			LocyItem item = new LocyItem(key, config.getString(key + ".name")
 					,  returnMaterial(config.getString(key + ".id")));
 			find++;
+
 			//TODO lore
 			List<String> lores = config.getStringList(key + ".lore");
 			if (lores != null && !lores.isEmpty()) {
@@ -58,6 +58,7 @@ public class ItemConfigReadFactory {
 					}
 				}
 			}
+
 			//TODO 技能
 			List<String> skills = config.getStringList(key + ".Skills");
 			if (skills != null && !skills.isEmpty()) {
@@ -65,6 +66,9 @@ public class ItemConfigReadFactory {
 					item.addSkill(obj);
 				}
 			}
+
+			//TODO 属性
+			OptionReaders.read(config.getStringList(key + ".Options"), item);
 
 			LocyItemAPI.registerItem(item);
 		}

@@ -1,6 +1,7 @@
 package com.locydragon.rli.api;
 
 import com.locydragon.rli.util.OptionReader;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
@@ -14,13 +15,29 @@ public class ItemCauseDamageEvent extends Event {
 	private OptionReader reader;
 	private LocyItem item;
 	private UUID eventID;
+	private double damage;
+	private Entity who;
 
-	public ItemCauseDamageEvent(Player player, String event, OptionReader reader, LocyItem item) {
+	public ItemCauseDamageEvent(Player player, String event, OptionReader reader, LocyItem item, double damage, Entity who) {
 		this.player = player;
 		this.event = event;
 		this.reader = reader;
 		this.item = item;
 		eventID = UUID.randomUUID();
+		this.damage = damage;
+		this.who = who;
+	}
+
+	public Entity getWho () {
+		return this.who;
+	}
+
+	public double getDamage() {
+		return this.damage;
+	}
+
+	public void setDamage(double damage) {
+		this.damage = damage;
 	}
 
 	public UUID getEventID() {

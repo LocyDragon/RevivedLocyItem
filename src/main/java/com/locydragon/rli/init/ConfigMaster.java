@@ -5,9 +5,9 @@ import com.locydragon.rli.io.ItemConfigReader;
 import org.bukkit.configuration.file.FileConfiguration;
 
 public class ConfigMaster {
-	private RevivedLocyItem plugin;
+	private static RevivedLocyItem plugin;
 	public ConfigMaster(RevivedLocyItem plugin) {
-		this.plugin = plugin;
+		ConfigMaster.plugin = plugin;
 	}
 
 	public void initConfig() {
@@ -16,8 +16,9 @@ public class ConfigMaster {
 		ItemConfigReader.readFile();
 	}
 
-	public void reloadConfig(){
+	public static void reloadConfig(){
 		plugin.reloadConfig();
+		RevivedLocyItem.mainConfiguration = plugin.getConfig();
 	}
 
 	public void saveConfig() {

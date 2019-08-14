@@ -37,12 +37,14 @@ public class InteractFatherListener implements Listener {
 							pack.setKey(entry.getKey());
 							pack.setValue(reader);
 							executedEntry.add(pack);
+							continue;
 						} else if (reader.getWhen() != null && reader.getWhen().equalsIgnoreCase(KEY_WORD_LEFT) && (e.getAction() == Action.LEFT_CLICK_AIR
 								|| e.getAction() == Action.LEFT_CLICK_BLOCK)) {
 							Pack<String,OptionReader> pack = new Pack<>();
 							pack.setKey(entry.getKey());
 							pack.setValue(reader);
 							executedEntry.add(pack);
+							continue;
 						}
 					}
 				}

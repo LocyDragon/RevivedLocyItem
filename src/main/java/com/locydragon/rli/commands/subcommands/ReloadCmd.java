@@ -2,6 +2,7 @@ package com.locydragon.rli.commands.subcommands;
 
 import com.locydragon.rli.RevivedLocyItem;
 import com.locydragon.rli.commands.SubCmd;
+import com.locydragon.rli.init.ConfigMaster;
 import com.locydragon.rli.io.ItemConfigReader;
 import com.locydragon.rli.util.Colors;
 import com.locydragon.rli.util.ConfigLinker;
@@ -14,6 +15,7 @@ public class ReloadCmd implements SubCmd {
 			return;
 		}
 		ItemConfigReader.readFile();
+		ConfigMaster.reloadConfig();
 		String msg = ConfigLinker.readConfigLang
 				("Reload", "{prefix}", Colors.color(RevivedLocyItem.mainConfiguration.getString("prefix")));
 		commandSender.sendMessage(msg);

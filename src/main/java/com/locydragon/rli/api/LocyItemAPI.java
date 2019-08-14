@@ -21,7 +21,12 @@ public class LocyItemAPI {
 		itemStack.clear();
 	}
 
-	public static boolean isLocyItem(ItemStack item) { return ItemNBTSetGet.getPluginTag(item) != null; }
+	public static boolean isLocyItem(ItemStack item) {
+		if (item == null || !item.hasItemMeta()) {
+			return false;
+		}
+		return ItemNBTSetGet.getPluginTag(item) != null;
+	}
 
 	public static String getID(ItemStack item) {
 		if (isLocyItem(item)) {

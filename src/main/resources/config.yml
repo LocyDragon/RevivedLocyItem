@@ -1,4 +1,6 @@
 prefix: "&7[&bRevivedLocyItem&7]"
+InfoSync: true #显示物品同步信息
+SyncDelay: 10 #同步的秒数间隔(秒)
 Lang: #语言信息
   lang-EncodeSet: ""
   lang-ShowVersion: "&aRevivedLocyItem-{version} 插件已经在您的服务器上加载了.(*^▽^*)"
@@ -6,3 +8,4 @@ Lang: #语言信息
   lang-GetItem: "{prefix}&c请使用/rli item [物品ID名称] ——来获得一个RPG物品吧!(*^▽^*)"
   lang-NotFound: "{prefix}&c对不起，没有找到那个RPG物品[○･｀Д´･ ○]."
   lang-Reload: "{prefix}&c重载配置文件成功(*^▽^*)"
+  lang-Sync: "&b同步了{amount}个RPG物品……"

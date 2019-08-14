@@ -46,6 +46,56 @@ public class ItemNBTSetGet {
 		throw new IllegalArgumentException();
 	}
 
+	public static ItemStack unbreakable(ItemStack item) {
+		Object nmsItem = null;
+		try {
+			nmsItem = craftItemClass.getMethod("asNMSCopy", ItemStack.class).invoke(null, item);
+			Object tag = nmsItemClass.getMethod("getTag").invoke(nmsItem);
+			if (tag == null) {
+				try {
+					tag = nbtCore.newInstance();
+				} catch (InstantiationException e) {
+					e.printStackTrace();
+				}
+			}
+			nbtCore.getMethod("setByte", new Class[] {String.class, byte.class}).invoke(tag, new Object[] {"Unbreakable", (byte)1});
+			nmsItemClass.getMethod("setTag", nbtCore).invoke(nmsItem, tag);
+		} catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
+			e.printStackTrace();
+		}
+		try {
+			return (ItemStack) craftItemClass.getMethod("asBukkitCopy",nmsItemClass).invoke(null, nmsItem);
+		} catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
+			e.printStackTrace();
+		}
+		throw new IllegalArgumentException();
+	}
+
+	public static ItemStack setInt(ItemStack item, String key, int value) {
+		Object nmsItem = null;
+		try {
+			nmsItem = craftItemClass.getMethod("asNMSCopy", ItemStack.class).invoke(null, item);
+			Object tag = nmsItemClass.getMethod("getTag").invoke(nmsItem);
+			if (tag == null) {
+				try {
+					tag = nbtCore.newInstance();
+				} catch (InstantiationException e) {
+					e.printStackTrace();
+				}
+			}
+			nbtCore.getMethod("setInt", new Class[] {String.class, int.class}).invoke(tag, new Object[] {key,value});
+			nmsItemClass.getMethod("setTag", nbtCore).invoke(nmsItem, tag);
+		} catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
+			e.printStackTrace();
+		}
+		try {
+			return (ItemStack) craftItemClass.getMethod("asBukkitCopy",nmsItemClass).invoke(null, nmsItem);
+		} catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
+			e.printStackTrace();
+		}
+		throw new IllegalArgumentException();
+	}
+
 	public static String getPluginTag(ItemStack item) {
 		try {
 			Object nmsItem = craftItemClass.getMethod("asNMSCopy", ItemStack.class).invoke(null, item);
