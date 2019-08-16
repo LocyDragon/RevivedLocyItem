@@ -1,6 +1,6 @@
 prefix: "&7[&bRevivedLocyItem&7]"
 InfoSync: true #显示物品同步信息
-SyncDelay: 10 #同步的秒数间隔(秒)
+SyncDelay: 5 #同步的秒数间隔(秒)
 Lang: #语言信息
   lang-EncodeSet: ""
   lang-ShowVersion: "&aRevivedLocyItem-{version} 插件已经在您的服务器上加载了.(*^▽^*)"

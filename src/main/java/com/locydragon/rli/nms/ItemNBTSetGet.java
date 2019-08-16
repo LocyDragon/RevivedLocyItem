@@ -10,12 +10,16 @@ public class ItemNBTSetGet {
 	private static Class<?> craftItemClass = null;
 	private static Class<?> nmsItemClass = null;
 	private static Class<?> nbtCore = null;
+	private static Class<?> nbtList = null;
+	private static Class<?> nbtBase = null;
 
 	static {
 		try {
 			craftItemClass = Class.forName("org.bukkit.craftbukkit." + version+ ".inventory.CraftItemStack");
 			nmsItemClass = Class.forName("net.minecraft.server." + version +".ItemStack");
 			nbtCore = Class.forName("net.minecraft.server." + version +".NBTTagCompound");
+			nbtList = Class.forName("net.minecraft.server." + version +".NBTTagList");
+			nbtBase = Class.forName("net.minecraft.server." + version +".NBTBase");
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -71,7 +75,7 @@ public class ItemNBTSetGet {
 		throw new IllegalArgumentException();
 	}
 
-	public static ItemStack setInt(ItemStack item, String key, int value) {
+	public static ItemStack setInt(ItemStack item, String key, double value) {
 		Object nmsItem = null;
 		try {
 			nmsItem = craftItemClass.getMethod("asNMSCopy", ItemStack.class).invoke(null, item);
@@ -83,8 +87,35 @@ public class ItemNBTSetGet {
 					e.printStackTrace();
 				}
 			}
-			nbtCore.getMethod("setInt", new Class[] {String.class, int.class}).invoke(tag, new Object[] {key,value});
-			nmsItemClass.getMethod("setTag", nbtCore).invoke(nmsItem, tag);
+			Object list = nbtList.cast(nbtCore.getMethod("get", String.class).invoke(tag, new Object[] {"AttributeModifiers"}));
+			if (list == null) {
+				try {
+					list = nbtList.cast(nbtList.newInstance());
+				} catch (InstantiationException e) {
+					e.printStackTrace();
+				}
+			}
+			try {
+				Object tagInstance = nbtCore.newInstance();
+				nbtCore.getMethod("setString", new Class[] {String.class, String.class}).invoke(tagInstance,
+						new Object[] {"AttributeName", key});
+				nbtCore.getMethod("setString", new Class[] {String.class, String.class}).invoke(tagInstance,
+						new Object[] {"Name", key.split("\\.", 2)[1]});
+				nbtCore.getMethod("setDouble", new Class[] {String.class, double.class}).invoke(tagInstance,
+						new Object[] {"Amount", value});
+				nbtCore.getMethod("setInt", new Class[] {String.class, int.class}).invoke(tagInstance,
+						new Object[] {"Operation", 0});
+				nbtCore.getMethod("setInt", new Class[] {String.class, int.class}).invoke(tagInstance,
+						new Object[] {"UUIDLeast", 20000});
+				nbtCore.getMethod("setInt", new Class[] {String.class, int.class}).invoke(tagInstance,
+						new Object[] {"UUIDMost", 1000});
+				nbtList.getMethod("add", nbtBase).invoke(list,
+						new Object[] {tagInstance});
+				nbtCore.getMethod("set", String.class, nbtBase).invoke(tag, "AttributeModifiers", list);
+				nmsItemClass.getMethod("setTag", nbtCore).invoke(nmsItem, tag);
+			} catch (InstantiationException e) {
+				e.printStackTrace();
+			}
 		} catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
 			e.printStackTrace();
 		}

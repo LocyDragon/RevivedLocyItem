@@ -18,9 +18,15 @@ public class ItemSyncRunnable extends BukkitRunnable {
 			int size = 0;
 			for (int i = 0;i < online.getInventory().getSize();i++) {
 				ItemStack locationItem = online.getInventory().getItem(i);
+				if (locationItem == null) {
+					continue;
+				}
+				ItemStack locationItemClone = locationItem.clone();
 				if (LocyItemAPI.isLocyItem(locationItem)) {
 					LocyItem model = LocyItemAPI.asLocyItem(locationItem);
-					if (!locationItem.isSimilar(model.getItem())) {
+					locationItemClone.setAmount(model.getItem().getAmount());
+					locationItemClone.setDurability(model.getItem().getDurability());
+					if (!locationItemClone.isSimilar(model.getItem())) {
 						int amount = locationItem.getAmount();
 						ItemStack clonedItem = model.getItem().clone();
 						clonedItem.setAmount(amount);

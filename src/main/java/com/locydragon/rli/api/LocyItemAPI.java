@@ -25,7 +25,8 @@ public class LocyItemAPI {
 		if (item == null || !item.hasItemMeta()) {
 			return false;
 		}
-		return ItemNBTSetGet.getPluginTag(item) != null;
+		String obj = ItemNBTSetGet.getPluginTag(item);
+		return ItemNBTSetGet.getPluginTag(item) != null && itemStack.containsKey(obj);
 	}
 
 	public static String getID(ItemStack item) {

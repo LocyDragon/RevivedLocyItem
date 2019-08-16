@@ -7,6 +7,7 @@ import com.locydragon.rli.util.LangReader;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Listener;
 import org.bukkit.inventory.ItemFlag;
+import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.List;
 
@@ -18,24 +19,40 @@ public class OptionReaders implements Listener {
 				Bukkit.getLogger().info("Something wrong with item: " +item.getID() + "'s Option!" + object);
 			}
 			if (reader.headValue().equalsIgnoreCase("HIDE_ENCHANTS") && reader.value().equalsIgnoreCase("true")) {
-				item.getItem().getItemMeta().addItemFlags(ItemFlag.HIDE_ENCHANTS);
+				ItemMeta meta = item.getItem().getItemMeta();
+				meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+				item.getItem().setItemMeta(meta);
 			} else if (reader.headValue().equalsIgnoreCase("HIDE_ENCHANTS") && reader.value().equalsIgnoreCase("false")) {
-				item.getItem().getItemMeta().removeItemFlags(ItemFlag.HIDE_ENCHANTS);
+				ItemMeta meta = item.getItem().getItemMeta();
+				meta.removeItemFlags(ItemFlag.HIDE_ENCHANTS);
+				item.getItem().setItemMeta(meta);
 			}
 			if (reader.headValue().equalsIgnoreCase("HIDE_UNBREAKABLE") && reader.value().equalsIgnoreCase("true")) {
-				item.getItem().getItemMeta().addItemFlags(ItemFlag.HIDE_UNBREAKABLE);
+				ItemMeta meta = item.getItem().getItemMeta();
+				meta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE);
+				item.getItem().setItemMeta(meta);
 			} else if (reader.headValue().equalsIgnoreCase("HIDE_UNBREAKABLE") && reader.value().equalsIgnoreCase("false")) {
-				item.getItem().getItemMeta().removeItemFlags(ItemFlag.HIDE_UNBREAKABLE);
+				ItemMeta meta = item.getItem().getItemMeta();
+				meta.removeItemFlags(ItemFlag.HIDE_UNBREAKABLE);
+				item.getItem().setItemMeta(meta);
 			}
 			if (reader.headValue().equalsIgnoreCase("HIDE_ATTRIBUTES") && reader.value().equalsIgnoreCase("true")) {
-				item.getItem().getItemMeta().addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+				ItemMeta meta = item.getItem().getItemMeta();
+				meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+				item.getItem().setItemMeta(meta);
 			} else if (reader.headValue().equalsIgnoreCase("HIDE_ATTRIBUTES") && reader.value().equalsIgnoreCase("false")) {
-				item.getItem().getItemMeta().removeItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+				ItemMeta meta = item.getItem().getItemMeta();
+				meta.removeItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+				item.getItem().setItemMeta(meta);
 			}
 			if (reader.headValue().equalsIgnoreCase("HIDE_POTION_EFFECTS") && reader.value().equalsIgnoreCase("true")) {
-				item.getItem().getItemMeta().addItemFlags(ItemFlag.HIDE_POTION_EFFECTS);
+				ItemMeta meta = item.getItem().getItemMeta();
+				meta.addItemFlags(ItemFlag.HIDE_POTION_EFFECTS);
+				item.getItem().setItemMeta(meta);
 			} else if (reader.headValue().equalsIgnoreCase("HIDE_POTION_EFFECTS") && reader.value().equalsIgnoreCase("false")) {
-				item.getItem().getItemMeta().removeItemFlags(ItemFlag.HIDE_POTION_EFFECTS);
+				ItemMeta meta = item.getItem().getItemMeta();
+				meta.removeItemFlags(ItemFlag.HIDE_POTION_EFFECTS);
+				item.getItem().setItemMeta(meta);
 			}
 			if (reader.headValue().equalsIgnoreCase("DAMAGE")) {
 				String value = reader.value();
@@ -48,23 +65,23 @@ public class OptionReaders implements Listener {
 			}
 			if (reader.headValue().equalsIgnoreCase("ATTACK_SPEED")) {
 				item.setBuildItem(ItemNBTSetGet.setInt(item.getItem(),
-						"generic.attackSpeed", Integer.valueOf(reader.value())));
+						"generic.attackSpeed", Double.valueOf(reader.value())));
 			}
 			if (reader.headValue().equalsIgnoreCase("MAX_HEALTH")) {
 				item.setBuildItem(ItemNBTSetGet.setInt(item.getItem(),
-						"generic.maxHealth", Integer.valueOf(reader.value())));
+						"generic.maxHealth", Double.valueOf(reader.value())));
 			}
 			if (reader.headValue().equalsIgnoreCase("MOVE_SPEED")) {
 				item.setBuildItem(ItemNBTSetGet.setInt(item.getItem(),
-						"generic.movementSpeed", Integer.valueOf(reader.value())));
+						"generic.movementSpeed", Double.valueOf(reader.value())));
 			}
 			if (reader.headValue().equalsIgnoreCase("ARMOR_VALUE")) {
 				item.setBuildItem(ItemNBTSetGet.setInt(item.getItem(),
-						"generic.armor", Integer.valueOf(reader.value())));
+						"generic.armor", Double.valueOf(reader.value())));
 			}
 			if (reader.headValue().equalsIgnoreCase("LUCK_VALUE")) {
 				item.setBuildItem(ItemNBTSetGet.setInt(item.getItem(),
-						"generic.luck", Integer.valueOf(reader.value())));
+						"generic.luck", Double.valueOf(reader.value())));
 			}
 		}
 	}
