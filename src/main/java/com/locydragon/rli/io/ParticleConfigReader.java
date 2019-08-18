@@ -82,6 +82,19 @@ public class ParticleConfigReader {
 				config.set("Star.Effect", ListBuilder.buildList("circle ~ centre=(0,0,0);r=4;type=HAPPY_VILLAGER", "line ~ A=(0,0,4);B=(-2.74,0,-2.91);type=FLAME",
 						"delay ~ 100", "line ~ A=(0,0,4);B=(2.76,0,-2.89);type=FLAME", "delay ~ 100", "line ~ A=(2.76,0,-2.89);B=(-3.69,0,1.54);type=FLAME",
 						"delay ~ 100", "line ~ A=(-3.69,0,1.54);B=(3.71,0,1.48);type=FLAME", "delay ~ 100", "line ~ A=(-2.74,0,-2.91);B=(3.71,0,1.48);type=FLAME"));
+				//TODO FLOWER
+				config.set("Flower.origin", "(0,3,0)");
+				config.set("Flower.amount", 5);
+				config.set("Flower.offsetX", 0);
+				config.set("Flower.offsetY", 0);
+				config.set("Flower.offsetZ", 0);
+				config.set("Flower.speed", 0);
+				config.set("Flower.range", 10);
+				config.set("Flower.precision", 0.03);
+				config.set("Flower.Effect", ListBuilder.buildList("f ~ start=-3;end=3;ex=(((324-36*x*x)/9)&0.5)+2;symmetric=true;type=HAPPY_VILLAGER",
+						"f ~ start=-3;end=3;ex=((0-1)*((324-36*x*x)/9)&0.5)-2;symmetric=true;type=HAPPY_VILLAGER",
+						"f ~ start=-3;end=3;ex=((0-1)*((324-36*x*x)/9)&0.5)-2;symmetric=false;type=HAPPY_VILLAGER",
+						"f ~ start=-3;end=3;ex=(((324-36*x*x)/9)&0.5)+2;symmetric=false;type=HAPPY_VILLAGER"));
 				config.save(genFile);
 			} catch (IOException e) {
 				e.printStackTrace();

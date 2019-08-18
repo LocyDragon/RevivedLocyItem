@@ -43,7 +43,7 @@ public class ItemConfigReader {
 				, "HIDE_Attributes ~ true", "MAX_HEALTH ~ 3.5"));
 				config.set("ExampleItem.Enchantment", ListBuilder.buildList("DAMAGE_ALL ~ 8"));
 				config.set("ExampleItem.Skills", ListBuilder.buildList("launch ~ type=Fireball;damage=5 @LEFT", "launch ~ type=WitherSkull;damage=5 @RIGHT",
-						"particle ~ name=Star @RIGHT"));
+						"particle ~ name=Star @RIGHT", "msg ~ m=&7Chug! Chug! @RIGHT"));
 				config.save(genFile);
 			} catch (IOException e) {
 				e.printStackTrace();

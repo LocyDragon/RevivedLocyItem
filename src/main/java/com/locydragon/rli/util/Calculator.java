@@ -106,7 +106,7 @@ public final class Calculator {
      * @return
      */
     private boolean isOperator(char c) {
-        return c == '+' || c == '-' || c == '*' || c == '/' || c == '(' ||c == ')' || c == '^' || c == '%';
+        return c == '+' || c == '-' || c == '*' || c == '/' || c == '(' ||c == ')' || c == '^' || c == '%' || c == '&';
     }
     
     /**
@@ -116,6 +116,9 @@ public final class Calculator {
      * @return
      */
     public  boolean compare(char cur,char peek) {// 如果是peek优先级高于cur，返回true，默认都是peek优先级要低
+        if (cur == '&') {
+            return false;
+        }
         boolean result  = false;
         if(operatPriority[(peek)-40] >= operatPriority[(cur) - 40]) {
            result = true;
@@ -149,6 +152,8 @@ public final class Calculator {
                 result = String.valueOf(ArithHelper.doubleTime(firstValue, secondValue));
             case '%':
                 result = String.valueOf(Integer.valueOf(firstValue) % Integer.valueOf(secondValue));
+            case '&':
+                result = String.valueOf(Math.pow(Double.valueOf(firstValue), Double.valueOf(secondValue)));
         }
         return result;
     }
