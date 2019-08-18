@@ -1,6 +1,7 @@
 package com.locydragon.rli.listeners.sub;
 
 import com.locydragon.rli.api.SkillExecuteEvent;
+import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -11,6 +12,7 @@ public class CommandExecutor implements Listener {
 		if (e.getEventType().equalsIgnoreCase("command")) {
 			String cmdType = e.getOption().getValue("NONE", "type", "t", "ty");
 			String command = e.getOption().getValue("NONE", "command", "cmd", "c");
+			command = PlaceholderAPI.setPlaceholders(e.getPlayer(), command);
 			if (cmdType.equalsIgnoreCase("NONE")) {
 				if (!command.startsWith("/")) {
 					e.getPlayer().chat("/" + command);
