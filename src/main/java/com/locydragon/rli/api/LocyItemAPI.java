@@ -8,6 +8,9 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class LocyItemAPI {
 	private static ConcurrentHashMap<String,LocyItem> itemStack = new ConcurrentHashMap<>();
+	private static ConcurrentHashMap<String,ParticleUnit> unitMap = new ConcurrentHashMap<>();
+
+	public static void clearRegisteredParticle() { unitMap.clear(); }
 
 	public static void registerItem(LocyItem item) {
 		itemStack.put(item.getID(), item);
