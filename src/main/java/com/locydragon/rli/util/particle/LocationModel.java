@@ -16,6 +16,13 @@ public class LocationModel {
 		this.z = loc.getZ();
 	}
 
+	public LocationModel(String code) {
+		code = code.replace("(", "").replace(")", "");
+		this.x = Double.valueOf(code.split(",")[0]);
+		this.y = Double.valueOf(code.split(",")[1]);
+		this.z = Double.valueOf(code.split(",")[2]);
+	}
+
 	public LocationModel clone() {
 		return new LocationModel(this.x, this.y, this.z);
 	}
