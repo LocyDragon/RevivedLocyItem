@@ -1,11 +1,18 @@
 package com.locydragon.rli.util;
 
 import com.locydragon.rli.util.enums.JobType;
+import com.locydragon.rli.util.particle.LocationModel;
+import com.locydragon.rli.util.particle.ParticleEffect;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ParticleJob {
 	private JobType type;
 	private OptionReader reader;
 	private String extraValue = null;
+	private List<LocationModel> calculatedResult = new ArrayList<>();
+	public ParticleEffect effect = ParticleEffect.FLAME;
 
 	public ParticleJob(JobType type, OptionReader option) {
 		this.type = type;
@@ -26,5 +33,17 @@ public class ParticleJob {
 
 	public String getExtraValue() {
 		return this.extraValue;
+	}
+
+	public void addResult(LocationModel model) {
+		this.calculatedResult.add(model);
+	}
+
+	public List<LocationModel> result() {
+		return this.calculatedResult;
+	}
+
+	public boolean isReady() {
+		return !this.calculatedResult.isEmpty();
 	}
 }

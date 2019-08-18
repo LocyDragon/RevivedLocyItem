@@ -1,5 +1,6 @@
 package com.locydragon.rli.factory;
 
+import com.locydragon.rli.api.LocyItemAPI;
 import com.locydragon.rli.api.ParticleUnit;
 import com.locydragon.rli.util.particle.LocationModel;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -20,11 +21,14 @@ public class ParticleConfigReaderFactory {
 			unit.offsetZ = (float) config.getDouble(key + ".offsetZ", 0);
 			unit.speed = (float) config.getDouble(key + ".speed", 0.2);
 			unit.range = config.getInt(key + ".range", 10);
+			unit.cireclePrecision = config.getDouble(key + ".circlePrecision", 10);
+			unit.precision = config.getDouble(key + ".precision", 0.2);
 			List<String> effectList = config.getStringList(key + ".Effect");
 			if (effectList == null) {
 				effectList = new ArrayList<>();
 			}
 			unit.load(effectList);
+			LocyItemAPI.registerParticleEffect(unit);
 		}
 		return find;
 	}

@@ -12,6 +12,17 @@ public class LocyItemAPI {
 
 	public static void clearRegisteredParticle() { unitMap.clear(); }
 
+	public static boolean hasParticleEffect(String name) { return unitMap.containsKey(name); };
+
+	public static ParticleUnit getEffect(String name) {
+		if (!hasParticleEffect(name)) {
+			return null;
+		}
+		return unitMap.get(name);
+	}
+
+	public static void registerParticleEffect(ParticleUnit unit) { unitMap.put(unit.name, unit); }
+
 	public static void registerItem(LocyItem item) {
 		itemStack.put(item.getID(), item);
 	}

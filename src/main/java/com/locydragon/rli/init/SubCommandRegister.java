@@ -1,10 +1,7 @@
 package com.locydragon.rli.init;
 
 import com.locydragon.rli.commands.CommandDiverter;
-import com.locydragon.rli.commands.subcommands.ItemRewardCmd;
-import com.locydragon.rli.commands.subcommands.ItemRewardCmdCopy;
-import com.locydragon.rli.commands.subcommands.ReloadCmd;
-import com.locydragon.rli.commands.subcommands.VersionHelperCmd;
+import com.locydragon.rli.commands.subcommands.*;
 
 public class SubCommandRegister {
 	public static void registerSubCommands() {
@@ -12,5 +9,7 @@ public class SubCommandRegister {
 		CommandDiverter.addSubBasicCommand(new ItemRewardCmd());
 		CommandDiverter.addSubBasicCommand(new ItemRewardCmdCopy());
 		CommandDiverter.addSubBasicCommand(new ReloadCmd());
+		CommandDiverter.addSubBasicCommand(new ParticlePlayCmd());
+		CommandDiverter.addSubBasicCommand(new ParticlePlayCmdCopy());
 	}
 }
