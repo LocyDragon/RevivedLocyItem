@@ -70,6 +70,9 @@ public class ParticleUnit {
 						Location(Bukkit.getWorlds().get(0), centre.x, centre.y, centre.z);
 				for (LocationModel result : ParticleExpression.sendParticleCircle(fake,
 						Double.valueOf(job.getOptions().getValue(null,"radius", "r")), this.cireclePrecision)) {
+					result.x += this.centre.x;
+					result.y += this.centre.y;
+					result.z += this.centre.z;
 					job.addResult(result);
 				}
 				job.effect = ParticleEffect.valueOf(job.getOptions().getValue(null, "type", "t"));
@@ -82,6 +85,9 @@ public class ParticleUnit {
 				org.bukkit.Location fakeB = new
 						Location(Bukkit.getWorlds().get(0),B.x, B.y,B.z);
 				for (LocationModel result : ParticleExpression.buildLine(fakeA, fakeB, this.precision)) {
+					result.x += this.centre.x;
+					result.y += this.centre.y;
+					result.z += this.centre.z;
 					job.addResult(result);
 				}
 				job.effect = ParticleEffect.valueOf(job.getOptions().getValue(null, "type", "t"));
@@ -92,6 +98,9 @@ public class ParticleUnit {
 				String expression = job.getOptions().getValue(null,"expression", "ex");
 				for (LocationModel result : ParticleExpression.asFunction(expression, start, end, this.precision, this.centre.y,
 						Boolean.valueOf(job.getOptions().getValue("false","symmetric", "s")))) {
+					result.x += this.centre.x;
+					result.y += this.centre.y;
+					result.z += this.centre.z;
 					job.addResult(result);
 				}
 				job.effect = ParticleEffect.valueOf(job.getOptions().getValue(null, "type", "t"));
