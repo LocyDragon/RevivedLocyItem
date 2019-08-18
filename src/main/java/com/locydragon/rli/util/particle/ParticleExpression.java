@@ -4,6 +4,8 @@ import com.locydragon.rli.util.Calculator;
 import com.locydragon.rli.util.ExpressionHelper;
 import org.bukkit.Location;
 
+import java.math.BigDecimal;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -38,13 +40,21 @@ public class ParticleExpression {
 
 	public static List<LocationModel> asFunction(String expression, double start, double end, double precision, double y_origin, boolean symmetric) {
 		List<LocationModel> save = new ArrayList<>();
-		for (double begin = start; begin < end; begin += precision) {
-			double output = new Calculator()
-					.calculateWithOutPlayer(expression.replace("x", String.valueOf(begin)));
-			if (!symmetric) {
-				save.add(new LocationModel(begin, y_origin, output));
+		for (BigDecimal begin = new BigDecimal(String.valueOf(start))
+			 ; begin.compareTo(new BigDecimal(end)) == -1; begin = begin.add(new BigDecimal(precision))) {
+			String value;
+			if (begin.compareTo(new BigDecimal(0)) == -1) {
+				value = "(0-" + String.valueOf(Math.abs(begin.setScale(10,
+						BigDecimal.ROUND_HALF_UP).doubleValue())) + ")";
 			} else {
-				save.add(new LocationModel(output, y_origin, begin));
+				value = String.valueOf(begin.setScale(10, BigDecimal.ROUND_HALF_UP).doubleValue());
+			}
+			double output = new Calculator()
+					.calculateWithOutPlayer(expression.replace("x", value));
+			if (!symmetric) {
+				save.add(new LocationModel(begin.setScale(10, BigDecimal.ROUND_HALF_UP).doubleValue(), y_origin, output));
+			} else {
+				save.add(new LocationModel(output, y_origin, begin.setScale(10, BigDecimal.ROUND_HALF_UP).doubleValue()));
 			}
 		}
 		return save;

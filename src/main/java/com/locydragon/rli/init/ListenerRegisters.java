@@ -8,6 +8,7 @@ import com.locydragon.rli.listeners.InteractFatherListener;
 import com.locydragon.rli.listeners.sub.CommandExecutor;
 import com.locydragon.rli.listeners.sub.LaunchExecutor;
 import com.locydragon.rli.listeners.sub.NearByExecutor;
+import com.locydragon.rli.listeners.sub.ParticleExecutor;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Listener;
 
@@ -26,6 +27,7 @@ public class ListenerRegisters {
 		registerEventForBukkit(new OptionDamage());
 		registerEventForBukkit(new CommandExecutor());
 		registerEventForBukkit(new NearByExecutor());
+		registerEventForBukkit(new ParticleExecutor());
 	}
 
 	public void registerEventForBukkit(Listener listener) {

@@ -35,11 +35,15 @@ public class ItemConfigReader {
 				FileConfiguration config = YamlConfiguration.loadConfiguration(genFile);
 				config.set("ExampleItem.name", "&aTest Item");
 				config.set("ExampleItem.id", 283);
-				config.set("ExampleItem.lore", ListBuilder.buildList("&bThis is an test item!", "    &7---- which has been created on rli."));
+				config.set("ExampleItem.lore", ListBuilder.buildList(
+						"&b&m=======================================", "&bThis is an test item!", "    &7---- which has been created on rli.",
+						"&7Left_Click: Launch fireball!", "&7Right_Click: Do something magical!", "&b&m======================================="
+				));
 				config.set("ExampleItem.Options", ListBuilder.buildList("MOVE_SPEED ~ 0.15", "UNBREAKABLE ~ true", "HIDE_UNBREAKABLE ~ true"
 				, "HIDE_Attributes ~ true", "MAX_HEALTH ~ 3.5"));
 				config.set("ExampleItem.Enchantment", ListBuilder.buildList("DAMAGE_ALL ~ 8"));
-				config.set("ExampleItem.Skills", ListBuilder.buildList("launch ~ type=Fireball;damage=5 @LEFT", "launch ~ type=WitherSkull;damage=5 @RIGHT"));
+				config.set("ExampleItem.Skills", ListBuilder.buildList("launch ~ type=Fireball;damage=5 @LEFT", "launch ~ type=WitherSkull;damage=5 @RIGHT",
+						"particle ~ name=Star @RIGHT"));
 				config.save(genFile);
 			} catch (IOException e) {
 				e.printStackTrace();

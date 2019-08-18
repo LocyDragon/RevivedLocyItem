@@ -17,6 +17,7 @@ public final class Calculator {
      */
     public double calculate(Player who, String expression) {
         expression = PlaceholderAPI.setBracketPlaceholders(who, expression);
+        //return Double.valueOf(new CalculateStack().Calculate(expression, 10));
         Stack<String> resultStack  = new Stack<String>();
         prepare(expression);
         Collections.reverse(postfixStack);//将后缀式栈反转
@@ -36,6 +37,7 @@ public final class Calculator {
     }
 
     public double calculateWithOutPlayer(String expression) {
+        //return Double.valueOf(new CalculateStack().Calculate(expression, 10));
         Stack<String> resultStack  = new Stack<String>();
         prepare(expression);
         Collections.reverse(postfixStack);//将后缀式栈反转
