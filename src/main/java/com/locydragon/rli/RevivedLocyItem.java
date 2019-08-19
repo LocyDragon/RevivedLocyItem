@@ -43,5 +43,6 @@ public class RevivedLocyItem extends JavaPlugin {
 				, getConfig().getInt("SyncDelay") * 20);
 
 		isCitizensOnServer = Bukkit.getPluginManager().isPluginEnabled("Citizens");
+		new Metrics(this);
 	}
 }
