@@ -5,6 +5,7 @@ import com.locydragon.rli.editor.listeners.MainMenuListener;
 import com.locydragon.rli.editor.optionreader.OptionDamage;
 import com.locydragon.rli.factory.OptionReaders;
 import com.locydragon.rli.listeners.InteractFatherListener;
+import com.locydragon.rli.listeners.heat.HeatFatherListener;
 import com.locydragon.rli.listeners.sub.*;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Listener;
@@ -30,6 +31,7 @@ public class ListenerRegisters {
 		registerEventForBukkit(new PushExecutor());
 		registerEventForBukkit(new LightningEffectExecutor());
 		registerEventForBukkit(new AudioExecutor());
+		registerEventForBukkit(new HeatFatherListener());
 	}
 
 	public void registerEventForBukkit(Listener listener) {

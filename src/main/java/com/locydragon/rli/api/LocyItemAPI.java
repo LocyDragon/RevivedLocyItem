@@ -9,6 +9,11 @@ import java.util.concurrent.ConcurrentHashMap;
 public class LocyItemAPI {
 	private static ConcurrentHashMap<String,LocyItem> itemStack = new ConcurrentHashMap<>();
 	private static ConcurrentHashMap<String,ParticleUnit> unitMap = new ConcurrentHashMap<>();
+	private static ConcurrentHashMap<String,SkillUnit> skillMap = new ConcurrentHashMap<>();
+
+	public static void clearRegisteredSkill() {skillMap.clear();}
+
+	public static void registerSkillUnit(SkillUnit unit) { skillMap.put(unit.getName(), unit);}
 
 	public static void clearRegisteredParticle() { unitMap.clear(); }
 
