@@ -26,6 +26,9 @@ public class ListenerRegisters {
 		registerEventForBukkit(new NearByExecutor());
 		registerEventForBukkit(new ParticleExecutor());
 		registerEventForBukkit(new MsgExecutor());
+		registerEventForBukkit(new ReachExecutor());
+		registerEventForBukkit(new PushExecutor());
+		registerEventForBukkit(new LightningEffectExecutor());
 	}
 
 	public void registerEventForBukkit(Listener listener) {

@@ -96,8 +96,10 @@ public class ParticleUnit {
 				double start = Double.valueOf(job.getOptions().getValue(null, "start", "s", "begin"));
 				double end = Double.valueOf(job.getOptions().getValue(null,"end", "e", "stop"));
 				String expression = job.getOptions().getValue(null,"expression", "ex");
-				for (LocationModel result : ParticleExpression.asFunction(expression, start, end, this.precision, this.centre.y,
-						Boolean.valueOf(job.getOptions().getValue("false","symmetric", "s")))) {
+				for (LocationModel result : ParticleExpression.asFunction(expression, start, end, this.precision, this.centre,
+						Boolean.valueOf(job.getOptions().getValue("false","symmetric", "s")),
+								Boolean.valueOf(job.getOptions().getValue("false","solidX", "sx")),
+										Boolean.valueOf(job.getOptions().getValue("false","solidZ", "sz")))) {
 					result.x += this.centre.x;
 					result.y += this.centre.y;
 					result.z += this.centre.z;

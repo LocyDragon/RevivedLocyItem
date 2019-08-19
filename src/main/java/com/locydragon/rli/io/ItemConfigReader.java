@@ -22,7 +22,7 @@ public class ItemConfigReader {
 				total += ItemConfigReadFactory.readFile(YamlConfiguration.loadConfiguration(exists));
 			}
 		}
-		Bukkit.getLogger().info("Successfully load " + total + " items in RLI!");
+		Bukkit.getPluginManager().getPlugin("RevivedLocyItem").getLogger().info("Successfully load " + total + " items in RLI!");
 	}
 
 	public static void genDefault() {

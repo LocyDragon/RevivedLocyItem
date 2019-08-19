@@ -13,7 +13,7 @@ public class InfoLogger {
 	}
 
 	public void printOutLog() {
-		addOnEnableMsg("===========[RevivedLocyItem]===========");
+		addOnEnableMsg("===========[RevivedLocyItem——欢迎语]===========");
 		addOnEnableMsg("欢迎使用重生版RPG武器插件 RevivedLocyItem");
 		addOnEnableMsg("作者: LocyDragon QQ2424441676");
 		addOnEnableMsg("论坛id: MagicLocyDragon");
@@ -21,5 +21,6 @@ public class InfoLogger {
 		addOnEnableMsg("苟利国家生死以,岂因祸福避趋之");
 		addOnEnableMsg("当你看到这个消息，你的寿命已经-1s了.");
 		addOnEnableMsg("§bPluginsCDTribe-Group");
+		addOnEnableMsg("===========[RevivedLocyItem——欢迎语]===========");
 	}
 }

@@ -115,8 +115,11 @@ public final class Calculator {
      * @param peek
      * @return
      */
-    public  boolean compare(char cur,char peek) {// 如果是peek优先级高于cur，返回true，默认都是peek优先级要低
+    public  boolean compare(char cur,char peek) {// 如果是peek优先级高于cur，返回true，默认都是peek优先级要/// 低
         if (cur == '&') {
+            return false;
+        }
+        if (peek == '&') {
             return false;
         }
         boolean result  = false;
@@ -153,8 +156,16 @@ public final class Calculator {
             case '%':
                 result = String.valueOf(Integer.valueOf(firstValue) % Integer.valueOf(secondValue));
             case '&':
-                result = String.valueOf(Math.pow(Double.valueOf(firstValue), Double.valueOf(secondValue)));
+                result = String.valueOf(pow(Double.valueOf(firstValue), Double.valueOf(secondValue)));
         }
         return result;
+    }
+
+    private double pow(double key, double value) {
+        if (key == 0) {
+            return 1.0;
+        } else {
+            return Math.pow(key, value);
+        }
     }
 }

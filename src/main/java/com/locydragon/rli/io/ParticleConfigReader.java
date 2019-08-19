@@ -24,7 +24,7 @@ public class ParticleConfigReader {
 						.readFile(YamlConfiguration.loadConfiguration(exists));
 			}
 		}
-		Bukkit.getLogger().info("Successfully load " + total + " particles in RLI!");
+		Bukkit.getPluginManager().getPlugin("RevivedLocyItem").getLogger().info("Successfully load " + total + " particles in RLI!");
 	}
 
 	public static void genDefault() {
@@ -90,7 +90,7 @@ public class ParticleConfigReader {
 				config.set("Flower.offsetZ", 0);
 				config.set("Flower.speed", 0);
 				config.set("Flower.range", 10);
-				config.set("Flower.precision", 0.03);
+				config.set("Flower.precision", 0.1);
 				config.set("Flower.Effect", ListBuilder.buildList("f ~ start=-3;end=3;ex=(((324-36*x*x)/9)&0.5)+2;symmetric=true;type=HAPPY_VILLAGER",
 						"f ~ start=-3;end=3;ex=((0-1)*((324-36*x*x)/9)&0.5)-2;symmetric=true;type=HAPPY_VILLAGER",
 						"f ~ start=-3;end=3;ex=((0-1)*((324-36*x*x)/9)&0.5)-2;symmetric=false;type=HAPPY_VILLAGER",
