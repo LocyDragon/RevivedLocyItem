@@ -29,6 +29,7 @@ public class ListenerRegisters {
 		registerEventForBukkit(new ReachExecutor());
 		registerEventForBukkit(new PushExecutor());
 		registerEventForBukkit(new LightningEffectExecutor());
+		registerEventForBukkit(new AudioExecutor());
 	}
 
 	public void registerEventForBukkit(Listener listener) {
