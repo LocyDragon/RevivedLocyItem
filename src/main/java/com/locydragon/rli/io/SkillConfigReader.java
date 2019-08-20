@@ -23,6 +23,7 @@ public class SkillConfigReader {
 			}
 		}
 		Bukkit.getPluginManager().getPlugin("RevivedLocyItem").getLogger().info("Successfully load " + total + " skills in RLI!");
+		Bukkit.getPluginManager().getPlugin("RevivedLocyItem").getLogger().info("成功加载了 " + total + " 个技能于 RLI!");
 	}
 
 	public static void genDefault() {

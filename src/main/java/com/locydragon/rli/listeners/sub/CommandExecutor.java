@@ -32,14 +32,20 @@ public class CommandExecutor implements Listener {
 			if (cmdType.equalsIgnoreCase("op")) {
 				if (!command.startsWith("/")) {
 					boolean isOp = e.getPlayer().isOp();
-					e.getPlayer().setOp(true);
-					e.getPlayer().chat("/" + command);
-					e.getPlayer().setOp(isOp);
+					try {
+						e.getPlayer().setOp(true);
+						e.getPlayer().chat("/" + command);
+					} catch (Throwable t) {} finally {
+						e.getPlayer().setOp(isOp);
+					}
 				} else {
 					boolean isOp = e.getPlayer().isOp();
-					e.getPlayer().setOp(true);
-					e.getPlayer().chat(command);
-					e.getPlayer().setOp(isOp);
+					try {
+						e.getPlayer().setOp(true);
+						e.getPlayer().chat(command);
+					} catch (Throwable t) {} finally {
+						e.getPlayer().setOp(isOp);
+					}
 				}
 				return;
 			}

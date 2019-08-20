@@ -13,6 +13,7 @@ public class InfoLogger {
 	}
 
 	public void printOutLog() {
+		printDraw();
 		addOnEnableMsg("===========[RevivedLocyItem——欢迎语]===========");
 		addOnEnableMsg("欢迎使用重生版RPG武器插件 RevivedLocyItem");
 		addOnEnableMsg("作者: LocyDragon QQ2424441676");
@@ -22,5 +23,16 @@ public class InfoLogger {
 		addOnEnableMsg("当你看到这个消息，你的寿命已经-1s了.");
 		addOnEnableMsg("§bPluginsCDTribe-Group");
 		addOnEnableMsg("===========[RevivedLocyItem——欢迎语]===========");
+	}
+
+	public void printDraw() {
+		addOnEnableMsg(" ____        __         ______     ");
+		addOnEnableMsg("/\\  _`\\     /\\ \\       /\\__  _\\    ");
+		addOnEnableMsg("\\ \\ \\ \\ \\   \\ \\ \\      \\/_/\\ \\/    ");
+		addOnEnableMsg(" \\ \\ ,  /    \\ \\ \\  __    \\ \\ \\    ");
+		addOnEnableMsg("  \\ \\ \\\\ \\    \\ \\ \\ \\ \\    \\_\\ \\__ ");
+		addOnEnableMsg("   \\ \\_\\ \\_\\   \\ \\____/    /\\_____\\");
+		addOnEnableMsg("    \\/_/\\/ /    \\/___/     \\/_____/");
+		addOnEnableMsg("");
 	}
 }

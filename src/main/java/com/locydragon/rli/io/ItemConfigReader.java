@@ -23,6 +23,7 @@ public class ItemConfigReader {
 			}
 		}
 		Bukkit.getPluginManager().getPlugin("RevivedLocyItem").getLogger().info("Successfully load " + total + " items in RLI!");
+		Bukkit.getPluginManager().getPlugin("RevivedLocyItem").getLogger().info("成功加载了 " + total + " 个特殊物品于 RLI!");
 	}
 
 	public static void genDefault() {
@@ -36,7 +37,7 @@ public class ItemConfigReader {
 				config.set("ExampleItem.name", "&aTest Item");
 				config.set("ExampleItem.id", 283);
 				config.set("ExampleItem.lore", ListBuilder.buildList(
-						"&b&m=======================================", "&bThis is an test item!", "    &7---- which has been created on rli.",
+						"&b&m=======================================", "&bThis is a test item!", "    &7---- which has been created on rli.",
 						"&7Left_Click: Damage the entity far away!",
 						"&7Right_Click: Do something magical!", "&b&m======================================="
 				));
@@ -44,7 +45,7 @@ public class ItemConfigReader {
 				, "HIDE_Attributes ~ true", "MAX_HEALTH ~ 3.5"));
 				config.set("ExampleItem.Enchantment", ListBuilder.buildList("DAMAGE_ALL ~ 8"));
 				config.set("ExampleItem.Skills", ListBuilder.buildList("skill ~ name=ExampleSkillReach @LEFT",
-						"msg ~ msg=&7Xiu~ @LEFT",
+						"msg ~ msg=&7Slurp~ @LEFT",
 						"skill ~ name=ExampleSkill @RIGHT"));
 				config.save(genFile);
 			} catch (IOException e) {

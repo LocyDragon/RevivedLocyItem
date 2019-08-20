@@ -25,6 +25,7 @@ public class ParticleConfigReader {
 			}
 		}
 		Bukkit.getPluginManager().getPlugin("RevivedLocyItem").getLogger().info("Successfully load " + total + " particles in RLI!");
+		Bukkit.getPluginManager().getPlugin("RevivedLocyItem").getLogger().info("成功加载了 " + total + " 个粒子效果于 RLI!");
 	}
 
 	public static void genDefault() {

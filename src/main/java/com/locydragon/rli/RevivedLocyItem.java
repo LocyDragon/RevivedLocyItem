@@ -35,8 +35,11 @@ public class RevivedLocyItem extends JavaPlugin {
 		instance = this;
 
 		if (!Bukkit.getPluginManager().isPluginEnabled("PlaceholderAPI")) {
-			Bukkit.getPluginManager().disablePlugin(this);
 			getLogger().info("Failed to find plugin PlaceholderAPI……");
+			getLogger().info("Plugin disabled automatically……");
+			getLogger().info("我们没能找到 PlaceholderAPI 这个插件……");
+			getLogger().info("插件自动地关闭了……");
+			Bukkit.getPluginManager().disablePlugin(this);
 		}
 
 		new ItemSyncRunnable().runTaskTimer(this, 0
