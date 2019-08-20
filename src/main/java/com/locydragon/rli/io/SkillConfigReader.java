@@ -2,6 +2,7 @@ package com.locydragon.rli.io;
 
 import com.locydragon.rli.api.LocyItemAPI;
 import com.locydragon.rli.factory.SkillConfigReaderFactory;
+import com.locydragon.rli.util.ListBuilder;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -32,7 +33,18 @@ public class SkillConfigReader {
 			try {
 				genFile.createNewFile();
 				FileConfiguration config = YamlConfiguration.loadConfiguration(genFile);
+				config.set("ExampleSkill.cooldown", 10);
+				config.set("ExampleSkill.wait",
+						"&7>>> &bPlease wait for {cd}s so that you can use skill again!");
+				config.set("ExampleSkill.Skills", ListBuilder.buildList("msg ~ m=&7Chug! Chug!", "particle ~ name=Star"
+				, "lightning ~", "delay ~ 1000", "launch ~ type=FireBall;d=15", "push ~ dp=-1.6;dh=0.8"));
 
+				config.set("ExampleSkillReach.cooldown", 3);
+				config.set("ExampleSkillReach.wait",
+						"&7>>> &cPlease wait for {cd}s so that you can use skill again!");
+				config.set("ExampleSkillReach.Skills", ListBuilder.buildList("reach ~ r=15;d=25"));
+
+				config.save(genFile);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}

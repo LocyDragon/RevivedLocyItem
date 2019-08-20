@@ -37,13 +37,15 @@ public class ItemConfigReader {
 				config.set("ExampleItem.id", 283);
 				config.set("ExampleItem.lore", ListBuilder.buildList(
 						"&b&m=======================================", "&bThis is an test item!", "    &7---- which has been created on rli.",
-						"&7Left_Click: Launch fireball!", "&7Right_Click: Do something magical!", "&b&m======================================="
+						"&7Left_Click: Damage the entity far away!",
+						"&7Right_Click: Do something magical!", "&b&m======================================="
 				));
 				config.set("ExampleItem.Options", ListBuilder.buildList("MOVE_SPEED ~ 0.15", "UNBREAKABLE ~ true", "HIDE_UNBREAKABLE ~ true"
 				, "HIDE_Attributes ~ true", "MAX_HEALTH ~ 3.5"));
 				config.set("ExampleItem.Enchantment", ListBuilder.buildList("DAMAGE_ALL ~ 8"));
-				config.set("ExampleItem.Skills", ListBuilder.buildList("launch ~ type=Fireball;damage=5 @LEFT", "launch ~ type=WitherSkull;damage=5 @RIGHT",
-						"particle ~ name=Star @RIGHT", "msg ~ m=&7Chug! Chug! @RIGHT", "lightning ~ @RIGHT"));
+				config.set("ExampleItem.Skills", ListBuilder.buildList("skill ~ name=ExampleSkillReach @LEFT",
+						"msg ~ msg=&7Xiu~ @LEFT",
+						"skill ~ name=ExampleSkill @RIGHT"));
 				config.save(genFile);
 			} catch (IOException e) {
 				e.printStackTrace();
