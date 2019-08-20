@@ -18,6 +18,10 @@ public class OptionReader {
 		Arrays.stream(this.info.split(";")).forEach(x -> values.add(x));
 	}
 
+	public String getInfo() {
+		return this.info;
+	}
+
 	public String getValue(String defaultValue, String... key) {
 		List<String> asList = Arrays.asList(key);
 		for (String obj : values) {

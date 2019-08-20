@@ -1,15 +1,22 @@
 package com.locydragon.rli.api;
 
 import com.locydragon.rli.nms.ItemNBTSetGet;
-import org.bukkit.Bukkit;
 import org.bukkit.inventory.ItemStack;
-
 import java.util.concurrent.ConcurrentHashMap;
 
 public class LocyItemAPI {
 	private static ConcurrentHashMap<String,LocyItem> itemStack = new ConcurrentHashMap<>();
 	private static ConcurrentHashMap<String,ParticleUnit> unitMap = new ConcurrentHashMap<>();
 	private static ConcurrentHashMap<String,SkillUnit> skillMap = new ConcurrentHashMap<>();
+
+	public static SkillUnit getSkillUnit(String name) {
+		if (!hasSkillUnit(name)) {
+			return null;
+		}
+		return skillMap.get(name);
+	}
+
+	public static boolean hasSkillUnit(String name) { return skillMap.containsKey(name); }
 
 	public static void clearRegisteredSkill() {skillMap.clear();}
 

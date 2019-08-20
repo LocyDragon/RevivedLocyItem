@@ -32,6 +32,7 @@ public class ListenerRegisters {
 		registerEventForBukkit(new LightningEffectExecutor());
 		registerEventForBukkit(new AudioExecutor());
 		registerEventForBukkit(new HeatFatherListener());
+		registerEventForBukkit(new SkillListExecutor());
 	}
 
 	public void registerEventForBukkit(Listener listener) {

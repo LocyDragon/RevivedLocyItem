@@ -1,14 +1,18 @@
 package com.locydragon.rli.api;
 
+import com.locydragon.rli.RevivedLocyItem;
 import com.locydragon.rli.util.LangReader;
 import com.locydragon.rli.util.OptionReader;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
+import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
 
 public class SkillUnit {
-	private HashMap<String,List<OptionReader>> skillsMap = new HashMap<>();
+	private static Executor executor = Executors.newCachedThreadPool();
+
+	private ConcurrentLinkedQueue<String> skills = new ConcurrentLinkedQueue<>();
 	private String name;
 	private int coolDown;
 	private String outMessage;
@@ -20,11 +24,7 @@ public class SkillUnit {
 	}
 
 	public void addSkill(String param) {
-		LangReader langReader = new LangReader(param);
-		OptionReader reader = new OptionReader(langReader.value());
-		List<OptionReader> readerList = skillsMap.getOrDefault(langReader.headValue().trim().toLowerCase(), new ArrayList<>());
-		readerList.add(reader);
-		skillsMap.put(langReader.headValue().trim().toLowerCase(), readerList);
+		skills.add(param);
 	}
 
 	public String getName() {
@@ -37,5 +37,27 @@ public class SkillUnit {
 
 	public String getCDMessage() {
 		return this.outMessage;
+	}
+
+	public void run(Player who, LocyItem onItem) {
+		executor.execute(() -> {
+			for (String skill : this.skills) {
+				LangReader lang = new LangReader(skill);
+				OptionReader option = new OptionReader(lang.value());
+				if (lang.headValue().equalsIgnoreCase("delay")) {
+					try {
+						Thread.sleep(Long.valueOf(option.getInfo()));
+						continue;
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+				} else {
+					Bukkit.getScheduler().runTask(RevivedLocyItem.instance, () -> {
+						Bukkit.getPluginManager()
+								.callEvent(new SkillExecuteEvent(who, lang.headValue(), option, onItem));
+					});
+				}
+			}
+		});
 	}
 }
