@@ -8,10 +8,16 @@ public class LangReader {
 	}
 
 	public String headValue() {
+		if (!info.contains("~")) {
+			return new String();
+		}
 		return info.split("~", 2)[0].trim();
 	}
 
 	public String value() {
+		if (!info.contains("~")) {
+			return info;
+		}
 		return info.split("~", 2)[1].trim();
 	}
 

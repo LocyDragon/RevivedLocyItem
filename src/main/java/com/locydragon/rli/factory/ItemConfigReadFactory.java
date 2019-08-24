@@ -70,6 +70,9 @@ public class ItemConfigReadFactory {
 			//TODO 属性
 			OptionReaders.read(config.getStringList(key + ".Options"), item);
 
+			for (String object : config.getStringList(key + ".Heat")) {
+				item.putHeatAfter(object);
+			}
 			LocyItemAPI.registerItem(item);
 		}
 		return find;

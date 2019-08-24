@@ -11,11 +11,13 @@ import org.bukkit.inventory.meta.ItemMeta;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Vector;
 
 public class LocyItem {
 	private ItemStack buildItem;
 	private String id;
 	private HashMap<String,List<OptionReader>> skillsMap = new HashMap<>();
+	private Vector<String> heatAfter = new Vector<>();
 
 	public LocyItem(String id, String name, Material material) {
 		buildItem = new ItemStack(material);
@@ -24,6 +26,14 @@ public class LocyItem {
 		setMeta(meta);
 		this.id = id;
 		this.buildItem = ItemNBTSetGet.addPluginTag(this.buildItem, id);
+	}
+
+	public void putHeatAfter(String object) {
+		this.heatAfter.add(object);
+	}
+
+	public Vector<String> getHeat() {
+		return this.heatAfter;
 	}
 
 	public void setBuildItem(ItemStack item) {

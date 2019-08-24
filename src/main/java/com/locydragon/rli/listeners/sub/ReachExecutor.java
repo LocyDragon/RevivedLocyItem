@@ -4,6 +4,7 @@ import com.locydragon.rli.api.ItemCauseDamageEvent;
 import com.locydragon.rli.api.SkillExecuteEvent;
 import com.locydragon.rli.util.ExpressionHelper;
 import com.locydragon.rli.util.particle.ParticleExpression;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -19,6 +20,7 @@ public class ReachExecutor implements Listener {
 			if (target != null) {
 				ItemCauseDamageEvent event = new ItemCauseDamageEvent(e.getPlayer(), e.getEventType()
 						, e.getOption(), e.getOnUseItem(), damage, target);
+				Bukkit.getPluginManager().callEvent(event);
 				target.damage(event.getDamage(), e.getPlayer());
 			}
 		}
